@@ -17,6 +17,7 @@ function MyApp() {
 	  const updated = characters.filter((character, i) => {
 		  return i !== index
 		});
+    makeDeleteCall(characters[index].id)
 		setCharacters(updated);
 	  }	
 	  
@@ -50,9 +51,9 @@ function MyApp() {
     }
  }
 
- async function makeDeleteCall(person) {
+ async function makeDeleteCall(id) {
    try {
-     const response = await axios.delete('http://localhost:5000/users/'+person.get("id"), person);
+     const response = await axios.delete('http://localhost:5000/users/'+id);
      return response
    }
    catch (error) {
