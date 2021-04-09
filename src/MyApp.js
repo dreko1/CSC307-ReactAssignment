@@ -50,6 +50,17 @@ function MyApp() {
     }
  }
 
+ async function makeDeleteCall(person) {
+   try {
+     const response = await axios.delete('http://localhost:5000/users/'+person.get("id"), person);
+     return response
+   }
+   catch (error) {
+     console.log(error);
+     return false;
+   }
+ }
+
 	return (
     <div className="container">
       <Table characterData={characters} removeCharacter={removeOneCharacter} />
